@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYTRIP — Perfil do Viajante</title>
+  <meta name="description" content="Acompanhe suas estatísticas de viajante, países visitados e personalize seu perfil no MYTRIP.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="perfil">
+
+  <!-- CABEÇALHO & NAVEGAÇÃO -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="brand" title="MYTRIP Início">
+        <div class="brand-icon">✈</div>
+        <span>MYTRIP</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação Principal">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html" class="active">Perfil</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="nova-viagem.html" class="btn-header-new">+ Nova viagem</a>
+        <button class="mobile-toggle" aria-label="Abrir menu de navegação">☰</button>
+      </div>
+    </div>
+
+    <!-- Menu Dropdown Mobile -->
+    <div class="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="viagens.html">Viagens</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="memorias.html">Memórias</a>
+      <a href="perfil.html" class="active">Perfil</a>
+      <a href="nova-viagem.html" class="btn-mobile-new">+ Nova viagem</a>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- CARD PRINCIPAL DO PERFIL -->
+    <section class="profile-card fade-in visible">
+      <div class="profile-avatar" id="profile-avatar">F</div>
+
+      <div class="profile-info">
+        <span class="profile-tag" id="profile-travel-style">Explorador Cultural</span>
+        <h1 class="profile-name" id="profile-name">Fernanda Ribeiro</h1>
+        <p class="profile-bio" id="profile-bio">
+          Apaixonada por colecionar momentos, carimbos no passaporte e pores do sol ao redor do mundo.
+        </p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 6px;">
+          📍 Base: <span id="profile-home-city" style="color: var(--text-muted); font-weight: 600;">São Paulo, Brasil</span>
+        </p>
+      </div>
+
+      <div class="profile-actions">
+        <button class="btn btn-outline" id="btn-open-edit-profile">✏️ Editar perfil</button>
+      </div>
+    </section>
+
+    <!-- ESTATÍSTICAS CONSOLIDADAS DO VIAJANTE -->
+    <section class="section-spacing fade-in visible">
+      <div class="section-header">
+        <div class="section-header-text">
+          <small>SEUS NÚMEROS</small>
+          <h2>Estatísticas da Jornada</h2>
+          <p>Métricas consolidadas calculadas em tempo real a partir do seu diário.</p>
+        </div>
+      </div>
+
+      <div class="profile-stats-grid">
+        <div class="profile-stat-box">
+          <div style="font-size: 2rem;">✈️</div>
+          <span class="number" id="prof-stat-trips">0</span>
+          <span class="label">Total de Viagens</span>
+        </div>
+
+        <div class="profile-stat-box">
+          <div style="font-size: 2rem;">🌎</div>
+          <span class="number" id="prof-stat-countries">0</span>
+          <span class="label">Países Conhecidos</span>
+        </div>
+
+        <div class="profile-stat-box">
+          <div style="font-size: 2rem;">📍</div>
+          <span class="number" id="prof-stat-cities">0</span>
+          <span class="label">Cidades Exploradas</span>
+        </div>
+
+        <div class="profile-stat-box">
+          <div style="font-size: 2rem;">📸</div>
+          <span class="number" id="prof-stat-memories">0</span>
+          <span class="label">Memórias Registradas</span>
+        </div>
+
+        <div class="profile-stat-box">
+          <div style="font-size: 2rem;">✓</div>
+          <span class="number" id="prof-stat-completed">0</span>
+          <span class="label">Viagens Concluídas</span>
+        </div>
+
+        <div class="profile-stat-box">
+          <div style="font-size: 2rem;">⏳</div>
+          <span class="number" id="prof-stat-upcoming">0</span>
+          <span class="label">Próximas Viagens</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLEÇÃO DE PAÍSES VISITADOS (PASSAPORTE) -->
+    <section class="countries-collection section-spacing fade-in visible">
+      <h3>Carimbos no Passaporte 🛂</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+        Todos os países cadastrados em suas jornadas registradas:
+      </p>
+
+      <div class="countries-badges-wrapper" id="profile-countries-list">
+        <!-- Preenchido dinamicamente via script.js -->
+      </div>
+    </section>
+
+    <!-- GERENCIAMENTO DE DADOS (EXPORTAR / RESTAURAR) -->
+    <section class="profile-card fade-in visible" style="justify-content: space-between; flex-wrap: wrap;">
+      <div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 4px;">Gerenciamento de Dados</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Seus dados estão armazenados com segurança no navegador através de LocalStorage.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button class="btn btn-secondary" id="btn-export-data">📥 Exportar Dados (JSON)</button>
+        <button class="btn btn-danger-outline" id="btn-reset-demo-data">🔄 Restaurar Demonstração</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE EDIÇÃO DE PERFIL -->
+  <div class="modal-backdrop" id="edit-profile-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>✏️ Editar Perfil</h3>
+        <button class="modal-close" id="close-profile-modal-btn" aria-label="Fechar modal">&times;</button>
+      </div>
+
+      <form id="edit-profile-form">
+        <div class="form-group">
+          <label for="profile-input-name">Seu Nome *</label>
+          <input type="text" id="profile-input-name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="profile-input-bio">Biografia / Lema de Viagem</label>
+          <textarea id="profile-input-bio" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="profile-input-city">Cidade / País Base</label>
+          <input type="text" id="profile-input-city" class="form-control" placeholder="Ex: São Paulo, Brasil">
+        </div>
+
+        <div class="form-group">
+          <label for="profile-input-style">Estilo de Viagem</label>
+          <input type="text" id="profile-input-style" class="form-control" placeholder="Ex: Mochileiro, Explorador Cultural, Aventura">
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
+          <button type="button" class="btn btn-outline" onclick="document.getElementById('edit-profile-modal').classList.remove('active')">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar Perfil</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">MYTRIP</div>
+      <p class="footer-tagline">Explore novos horizontes. Registre cada detalhe. Reviva para sempre.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="nova-viagem.html">Nova Viagem</a>
+      </div>
+      <small style="color: #79979D; margin-top: 12px;">© MYTRIP — Diário de Viagens Pessoal. Dados salvos localmente.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

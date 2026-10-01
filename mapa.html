@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYTRIP — Mapa de Destinos</title>
+  <meta name="description" content="Mapa visual estilizado com todos os destinos, países explorados e próximas viagens cadastradas no MYTRIP.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="mapa">
+
+  <!-- CABEÇALHO & NAVEGAÇÃO -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="brand" title="MYTRIP Início">
+        <div class="brand-icon">✈</div>
+        <span>MYTRIP</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação Principal">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html" class="active">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="nova-viagem.html" class="btn-header-new">+ Nova viagem</a>
+        <button class="mobile-toggle" aria-label="Abrir menu de navegação">☰</button>
+      </div>
+    </div>
+
+    <!-- Menu Dropdown Mobile -->
+    <div class="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="viagens.html">Viagens</a>
+      <a href="mapa.html" class="active">Mapa</a>
+      <a href="memorias.html">Memórias</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="nova-viagem.html" class="btn-mobile-new">+ Nova viagem</a>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- TÍTULO DA PÁGINA -->
+    <section class="section-header fade-in visible" style="margin-top: 8px;">
+      <div class="section-header-text">
+        <small>VISUALIZAÇÃO GLOBAL</small>
+        <h1>Mapa de Destinos 🗺️</h1>
+        <p>Acompanhe visualmente cada canto do planeta que você visitou ou planeja conhecer.</p>
+      </div>
+
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span class="tag-pill">🟢 Visitada</span>
+        <span class="tag-pill">🔵 Planejada</span>
+        <a href="nova-viagem.html" class="btn btn-primary btn-sm">+ Novo destino</a>
+      </div>
+    </section>
+
+    <!-- LAYOUT DO MAPA (MAPA + LISTA LATERAL) -->
+    <div class="map-page-layout fade-in visible">
+      
+      <!-- PALCO DO MAPA -->
+      <div class="map-card-wrapper">
+        <div class="map-stage" id="map-stage">
+          
+          <!-- SVG Vetorial do Mapa Múndi Estilizado Minimalista -->
+          <svg class="map-svg-background" viewBox="0 0 1000 520" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#EAF2F4"/>
+                <stop offset="100%" stop-color="#DEECEF"/>
+              </linearGradient>
+              <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#D1DFE2" stroke-width="0.75" stroke-dasharray="2 2"/>
+              </pattern>
+            </defs>
+
+            <!-- Fundo do Oceano com Grade de Paralelos/Meridianos -->
+            <rect width="1000" height="520" fill="url(#oceanGrad)"/>
+            <rect width="1000" height="520" fill="url(#gridPattern)"/>
+
+            <!-- Linha do Equador -->
+            <line x1="0" y1="260" x2="1000" y2="260" stroke="#C4D7DA" stroke-width="1.2" stroke-dasharray="4 4"/>
+            <!-- Trópico de Câncer e Capricórnio -->
+            <line x1="0" y1="180" x2="1000" y2="180" stroke="#CDE0E3" stroke-width="0.8" stroke-dasharray="3 3"/>
+            <line x1="0" y1="340" x2="1000" y2="340" stroke="#CDE0E3" stroke-width="0.8" stroke-dasharray="3 3"/>
+
+            <!-- Continentes Silhuetados Estilizados (#9BBEC5) -->
+            <!-- América do Norte -->
+            <path d="M120 70 C160 65 240 70 270 95 C290 115 280 160 250 190 C220 220 200 250 180 280 C165 250 130 220 110 180 C80 140 90 85 120 70 Z" fill="#9CBEC5" opacity="0.85"/>
+            <!-- Groenlândia -->
+            <path d="M310 40 C340 35 375 45 365 75 C345 95 320 90 305 75 C295 60 300 45 310 40 Z" fill="#A8C8CE" opacity="0.75"/>
+            <!-- América do Sul -->
+            <path d="M280 290 C340 295 370 340 360 410 C345 460 310 495 280 475 C260 440 260 360 280 290 Z" fill="#9CBEC5" opacity="0.85"/>
+            <!-- Europa -->
+            <path d="M460 90 C500 80 545 100 540 145 C520 170 480 185 455 170 C435 150 440 105 460 90 Z" fill="#9CBEC5" opacity="0.85"/>
+            <path d="M440 100 C455 90 460 115 445 125 Z" fill="#9CBEC5" opacity="0.85"/>
+            <!-- África -->
+            <path d="M460 200 C540 190 575 250 565 330 C550 400 500 425 470 380 C445 330 435 240 460 200 Z" fill="#9CBEC5" opacity="0.85"/>
+            <!-- Ásia -->
+            <path d="M550 90 C660 60 840 85 870 160 C880 220 830 270 760 270 C710 270 650 250 610 210 C565 190 545 130 550 90 Z" fill="#9CBEC5" opacity="0.85"/>
+            <!-- Japão / Ilhas Leste -->
+            <path d="M820 165 C835 160 840 185 825 200 C815 190 815 175 820 165 Z" fill="#9CBEC5" opacity="0.85"/>
+            <!-- Oceania / Austrália -->
+            <path d="M780 340 C860 335 885 395 860 435 C820 465 770 440 760 395 C755 365 765 345 780 340 Z" fill="#9CBEC5" opacity="0.85"/>
+            <!-- Nova Zelândia -->
+            <path d="M900 420 C915 415 920 440 910 455 C900 450 895 435 900 420 Z" fill="#9CBEC5" opacity="0.85"/>
+          </svg>
+
+          <!-- Pins Plotados Dinamicamente via script.js -->
+
+          <!-- Tooltip Interativo -->
+          <div class="map-tooltip" id="map-tooltip"></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: 0.85rem; color: var(--text-muted);">
+          <span>💡 Passe o mouse sobre os marcadores para ver os detalhes da viagem.</span>
+          <span>Atualizado automaticamente via LocalStorage</span>
+        </div>
+      </div>
+
+      <!-- PAINEL LATERAL DE DESTINOS -->
+      <aside class="map-sidebar">
+        <div class="map-sidebar-header">
+          <h3>Destinos no Mapa</h3>
+        </div>
+
+        <div class="map-destinations-list" id="map-destinations-list">
+          <!-- Gerado dinamicamente via script.js -->
+        </div>
+
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">
+          <a href="nova-viagem.html" class="btn btn-primary" style="width: 100%;">+ Adicionar Novo Destino</a>
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">MYTRIP</div>
+      <p class="footer-tagline">Explore novos horizontes. Registre cada detalhe. Reviva para sempre.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="nova-viagem.html">Nova Viagem</a>
+      </div>
+      <small style="color: #79979D; margin-top: 12px;">© MYTRIP — Diário de Viagens Pessoal. Dados salvos localmente.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

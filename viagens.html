@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYTRIP — Minhas Viagens</title>
+  <meta name="description" content="Explore e organize todas as suas viagens registradas no MYTRIP com filtros rápidos e busca em tempo real.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="viagens">
+
+  <!-- CABEÇALHO & NAVEGAÇÃO -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="brand" title="MYTRIP Início">
+        <div class="brand-icon">✈</div>
+        <span>MYTRIP</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação Principal">
+        <a href="index.html">Home</a>
+        <a href="viagens.html" class="active">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="nova-viagem.html" class="btn-header-new">+ Nova viagem</a>
+        <button class="mobile-toggle" aria-label="Abrir menu de navegação">☰</button>
+      </div>
+    </div>
+
+    <!-- Menu Dropdown Mobile -->
+    <div class="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="viagens.html" class="active">Viagens</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="memorias.html">Memórias</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="nova-viagem.html" class="btn-mobile-new">+ Nova viagem</a>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- TÍTULO DA PÁGINA -->
+    <section class="section-header fade-in visible" style="margin-top: 8px;">
+      <div class="section-header-text">
+        <small>SUAS AVENTURAS</small>
+        <h1>Minhas Viagens ✈️</h1>
+        <p>Acompanhe seus roteiros, edite informações ou planeje suas próximas partidas.</p>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="tag-pill" id="trips-count-badge">Carregando...</span>
+        <a href="nova-viagem.html" class="btn btn-primary">+ Criar nova viagem</a>
+      </div>
+    </section>
+
+    <!-- BARRA DE FERRAMENTAS: FILTROS & BUSCA -->
+    <section class="toolbar-container fade-in visible">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="todas">Todas as Viagens</button>
+        <button class="filter-btn" data-filter="proximas">✈️ Próximas</button>
+        <button class="filter-btn" data-filter="concluidas">✓ Concluídas</button>
+      </div>
+
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="trips-search-input" placeholder="Buscar por destino ou país..." aria-label="Buscar viagens">
+      </div>
+    </section>
+
+    <!-- GRID DE VIAGENS -->
+    <section class="trips-grid fade-in visible" id="trips-container">
+      <!-- Cards gerados dinamicamente via script.js -->
+    </section>
+
+  </main>
+
+  <!-- MODAL DE EDIÇÃO DE VIAGEM -->
+  <div class="modal-backdrop" id="edit-trip-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>✏️ Editar Viagem</h3>
+        <button class="modal-close" id="close-edit-modal-btn" aria-label="Fechar modal">&times;</button>
+      </div>
+
+      <form id="edit-trip-form">
+        <input type="hidden" id="edit-trip-id">
+
+        <div class="form-group">
+          <label for="edit-destination">Destino / Cidade *</label>
+          <input type="text" id="edit-destination" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-country">País *</label>
+          <input type="text" id="edit-country" class="form-control" required>
+        </div>
+
+        <div class="form-grid" style="margin-bottom: 0;">
+          <div class="form-group">
+            <label for="edit-start-date">Data de Início *</label>
+            <input type="date" id="edit-start-date" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-end-date">Data de Término</label>
+            <input type="date" id="edit-end-date" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-status">Status da Viagem *</label>
+          <select id="edit-status" class="form-control">
+            <option value="proxima">✈️ Próxima / Planejada</option>
+            <option value="concluida">✓ Concluída</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-description">Descrição / Detalhes</label>
+          <textarea id="edit-description" class="form-control" placeholder="Conte um pouco sobre os planos ou memórias dessa viagem..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-image">URL da Foto de Capa</label>
+          <input type="url" id="edit-image" class="form-control" placeholder="https://exemplo.com/foto.jpg">
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
+          <button type="button" class="btn btn-outline" onclick="document.getElementById('edit-trip-modal').classList.remove('active')">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">MYTRIP</div>
+      <p class="footer-tagline">Explore novos horizontes. Registre cada detalhe. Reviva para sempre.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="nova-viagem.html">Nova Viagem</a>
+      </div>
+      <small style="color: #79979D; margin-top: 12px;">© MYTRIP — Diário de Viagens Pessoal. Dados salvos localmente.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

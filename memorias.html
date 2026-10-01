@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYTRIP — Galeria de Memórias</title>
+  <meta name="description" content="Reviva e organize os momentos inesquecíveis das suas viagens na galeria de memórias do MYTRIP.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="memorias">
+
+  <!-- CABEÇALHO & NAVEGAÇÃO -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="brand" title="MYTRIP Início">
+        <div class="brand-icon">✈</div>
+        <span>MYTRIP</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação Principal">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html" class="active">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="nova-viagem.html" class="btn-header-new">+ Nova viagem</a>
+        <button class="mobile-toggle" aria-label="Abrir menu de navegação">☰</button>
+      </div>
+    </div>
+
+    <!-- Menu Dropdown Mobile -->
+    <div class="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="viagens.html">Viagens</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="memorias.html" class="active">Memórias</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="nova-viagem.html" class="btn-mobile-new">+ Nova viagem</a>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- TÍTULO DA PÁGINA -->
+    <section class="section-header fade-in visible" style="margin-top: 8px;">
+      <div class="section-header-text">
+        <small>MOMENTOS INESQUECÍVEIS</small>
+        <h1>Galeria de Memórias 📸</h1>
+        <p>Histórias, sensações, fotografias e momentos especiais de cada viagem.</p>
+      </div>
+
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span class="tag-pill" id="memories-count-badge">Carregando...</span>
+        <button class="btn btn-primary" id="btn-open-memory-modal">+ Nova memória</button>
+      </div>
+    </section>
+
+    <!-- BARRA DE FILTRO POR VIAGEM -->
+    <section class="toolbar-container fade-in visible">
+      <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+        <label for="memory-trip-filter" style="font-weight: 700; font-size: 0.9rem; color: var(--text-main); white-space: nowrap;">
+          Filtrar por viagem:
+        </label>
+        <select id="memory-trip-filter" class="form-control" style="max-width: 320px;">
+          <option value="todas">Todas as viagens</option>
+        </select>
+      </div>
+
+      <div>
+        <a href="nova-viagem.html" class="btn btn-outline btn-sm">Planejar nova viagem →</a>
+      </div>
+    </section>
+
+    <!-- GRID DE CARDS DE MEMÓRIAS -->
+    <section class="memories-grid fade-in visible" id="memories-container">
+      <!-- Gerado dinamicamente via script.js -->
+    </section>
+
+  </main>
+
+  <!-- MODAL DE CRIAÇÃO DE NOVA MEMÓRIA -->
+  <div class="modal-backdrop" id="new-memory-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>📸 Registrar Nova Memória</h3>
+        <button class="modal-close" id="close-memory-modal-btn" aria-label="Fechar modal">&times;</button>
+      </div>
+
+      <form id="new-memory-form">
+        <div class="form-group">
+          <label for="memory-trip-select">Viagem Relacionada *</label>
+          <select id="memory-trip-select" class="form-control" required>
+            <!-- Preenchido dinamicamente com viagens existentes -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="memory-title">Título do Momento *</label>
+          <input type="text" id="memory-title" class="form-control" placeholder="Ex: Pôr do sol incrível na praia, Jantar inesquecível" required>
+        </div>
+
+        <div class="form-grid" style="margin-bottom: 0;">
+          <div class="form-group">
+            <label for="memory-date">Data do Momento *</label>
+            <input type="date" id="memory-date" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="memory-tag">Categoria / Tag</label>
+            <select id="memory-tag" class="form-control">
+              <option value="Pôr do Sol">🌅 Pôr do Sol</option>
+              <option value="Gastronomia">🍽️ Gastronomia</option>
+              <option value="Aventura">🧗 Aventura & Trilha</option>
+              <option value="Cultura">🏛️ Arte & Cultura</option>
+              <option value="Natureza">🌿 Natureza</option>
+              <option value="Passeio">🚶 Passeio a Pé</option>
+              <option value="Momento">✨ Momento Especial</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="memory-text">Relato da Memória *</label>
+          <textarea id="memory-text" class="form-control" placeholder="Escreva sobre o que você sentiu, o que experimentou e os detalhes que tornaram este momento único..." required></textarea>
+        </div>
+
+        <!-- Seletor de Foto da Memória -->
+        <div class="form-group">
+          <label>Foto da Memória (Escolha um tema ou insira URL)</label>
+          <div class="presets-selector" id="memory-presets-container" style="grid-template-columns: repeat(3, 1fr);">
+            <!-- Presets via script.js -->
+          </div>
+          <div style="margin-top: 10px;">
+            <input type="url" id="memory-image-input" class="form-control" placeholder="Ou insira a URL da foto...">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
+          <button type="button" class="btn btn-outline" onclick="document.getElementById('new-memory-modal').classList.remove('active')">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Memória</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">MYTRIP</div>
+      <p class="footer-tagline">Explore novos horizontes. Registre cada detalhe. Reviva para sempre.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="nova-viagem.html">Nova Viagem</a>
+      </div>
+      <small style="color: #79979D; margin-top: 12px;">© MYTRIP — Diário de Viagens Pessoal. Dados salvos localmente.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

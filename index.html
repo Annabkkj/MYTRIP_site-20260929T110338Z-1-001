@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYTRIP — Seu Diário de Viagens Moderno</title>
+  <meta name="description" content="Registre, visualize e organize suas viagens, destinos favoritos e memórias especiais no MYTRIP.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+
+  <!-- CABEÇALHO & MENU DE NAVEGAÇÃO -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="brand" title="MYTRIP Início">
+        <div class="brand-icon">✈</div>
+        <span>MYTRIP</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação Principal">
+        <a href="index.html" class="active">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="nova-viagem.html" class="btn-header-new">+ Nova viagem</a>
+        <button class="mobile-toggle" aria-label="Abrir menu de navegação">☰</button>
+      </div>
+    </div>
+
+    <!-- Menu Dropdown Mobile -->
+    <div class="mobile-menu">
+      <a href="index.html" class="active">Home</a>
+      <a href="viagens.html">Viagens</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="memorias.html">Memórias</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="nova-viagem.html" class="btn-mobile-new">+ Nova viagem</a>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- BANNER DE BOAS-VINDAS (HERO) -->
+    <section class="hero fade-in visible">
+      <div class="hero-content">
+        <span class="hero-tag">✨ Seu Diário de Viagens</span>
+        <h1>Olá!</h1>
+        <h2>Para onde vamos hoje?</h2>
+        <p>
+          Registre suas aventuras, explore novos destinos e guarde cada detalhe, 
+          foto e história para reviver sempre que quiser.
+        </p>
+
+        <div class="hero-actions">
+          <a href="nova-viagem.html" class="btn btn-primary" id="btn-hero-new">✈ Criar nova viagem</a>
+          <a href="viagens.html" class="btn btn-secondary" id="btn-hero-explore">Explorar viagens →</a>
+        </div>
+      </div>
+
+      <!-- Card Visual Dinâmico do Próximo Destino -->
+      <div class="hero-art-card" id="hero-art-card">
+        <!-- Renderizado dinamicamente pelo script.js -->
+        <img class="hero-art-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80" alt="Destino em Destaque">
+        <div class="hero-art-overlay"></div>
+        <div class="hero-art-content">
+          <div class="hero-badge-float">
+            <span>✈️ PRÓXIMO DESTINO</span>
+          </div>
+          <h3 class="hero-art-title">Banff, Canadá 🇨🇦</h3>
+          <p class="hero-art-subtitle">📅 10 Dez — 20 Dez 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BARRA DE ESTATÍSTICAS AUTOMÁTICAS -->
+    <section class="stats-bar fade-in visible" aria-label="Estatísticas de Viagens">
+      <div class="stat-item">
+        <div class="stat-icon">✈️</div>
+        <div class="stat-info">
+          <span class="stat-number" id="stat-trips">0</span>
+          <span class="stat-label">Viagens Registradas</span>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon">🌎</div>
+        <div class="stat-info">
+          <span class="stat-number" id="stat-countries">0</span>
+          <span class="stat-label">Países Conhecidos</span>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon">📍</div>
+        <div class="stat-info">
+          <span class="stat-number" id="stat-cities">0</span>
+          <span class="stat-label">Cidades Exploradas</span>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon">📸</div>
+        <div class="stat-info">
+          <span class="stat-number" id="stat-memories">0</span>
+          <span class="stat-label">Memórias Guardadas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIAGENS RECENTES -->
+    <section class="section-spacing fade-in visible">
+      <div class="section-header">
+        <div class="section-header-text">
+          <small>CONTINUE EXPLORANDO</small>
+          <h2>Minhas viagens recentes</h2>
+          <p>Acompanhe suas jornadas mais recentes e próximas partidas planejadas.</p>
+        </div>
+        <a href="viagens.html" class="btn btn-outline btn-sm">Ver todas as viagens →</a>
+      </div>
+
+      <div class="trips-grid" id="recent-trips-grid">
+        <!-- Renderizado dinamicamente via script.js -->
+      </div>
+    </section>
+
+    <!-- CONVITE / CHAMADA PARA O MAPA VISUAL -->
+    <section class="map-callout-banner fade-in visible">
+      <div class="map-callout-content">
+        <small>SEUS CAMINHOS PELO MUNDO</small>
+        <h2>O mundo guarda todas as suas histórias.</h2>
+        <p>
+          Visualize cada ponto do planeta que você já visitou e planeje suas próximas rotas 
+          em um mapa estilizado e interativo.
+        </p>
+        <a href="mapa.html" class="btn btn-secondary">🗺️ Abrir meu mapa de viagens</a>
+      </div>
+
+      <div class="map-callout-preview">
+        <div style="font-size: 2.2rem; margin-bottom: 8px;">🌍 ✈️ 📍</div>
+        <h4 style="font-size: 1.1rem; margin-bottom: 6px;">Destinos Cadastrados</h4>
+        <p style="font-size: 0.85rem; color: #D2E4E6;">Seus carimbos pelo globo conectados em um único lugar.</p>
+        <div class="map-callout-badges" id="home-map-badges">
+          <!-- Países preenchidos dinamicamente -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ÚLTIMAS MEMÓRIAS -->
+    <section class="section-spacing fade-in visible">
+      <div class="section-header">
+        <div class="section-header-text">
+          <small>MOMENTOS ESPECIAIS</small>
+          <h2>Últimas memórias</h2>
+          <p>Relatos, sensações e registros fotográficos marcantes de cada aventura.</p>
+        </div>
+        <a href="memorias.html" class="btn btn-outline btn-sm">Ver galeria completa →</a>
+      </div>
+
+      <div class="memories-grid" id="recent-memories-grid">
+        <!-- Renderizado dinamicamente via script.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">MYTRIP</div>
+      <p class="footer-tagline">Explore novos horizontes. Registre cada detalhe. Reviva para sempre.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="nova-viagem.html">Nova Viagem</a>
+      </div>
+      <small style="color: #79979D; margin-top: 12px;">© MYTRIP — Diário de Viagens Pessoal. Dados salvos localmente.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYTRIP — Nova Viagem</title>
+  <meta name="description" content="Cadastre um novo destino no seu diário de viagens MYTRIP com datas, fotos de capa e relatos.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="nova-viagem">
+
+  <!-- CABEÇALHO & NAVEGAÇÃO -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="brand" title="MYTRIP Início">
+        <div class="brand-icon">✈</div>
+        <span>MYTRIP</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação Principal">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="nova-viagem.html" class="btn-header-new">+ Nova viagem</a>
+        <button class="mobile-toggle" aria-label="Abrir menu de navegação">☰</button>
+      </div>
+    </div>
+
+    <!-- Menu Dropdown Mobile -->
+    <div class="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="viagens.html">Viagens</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="memorias.html">Memórias</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="nova-viagem.html" class="btn-mobile-new">+ Nova viagem</a>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- TÍTULO DA PÁGINA -->
+    <div class="section-header fade-in visible" style="max-width: 800px; margin: 8px auto 24px;">
+      <div class="section-header-text">
+        <small>NOVO ROTEIRO</small>
+        <h1>Cadastrar Nova Viagem ✈️</h1>
+        <p>Preencha os detalhes da sua aventura para adicioná-la ao seu diário pessoal.</p>
+      </div>
+      <a href="viagens.html" class="btn btn-outline btn-sm">← Voltar para Viagens</a>
+    </div>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <div class="form-card fade-in visible">
+      <form id="new-trip-form">
+        <div class="form-grid">
+          
+          <div class="form-group">
+            <label for="trip-destination">Destino / Cidade *</label>
+            <input type="text" id="trip-destination" class="form-control" placeholder="Ex: Paris, Banff, Quioto, Salvador" required>
+          </div>
+
+          <div class="form-group">
+            <label for="trip-country">País *</label>
+            <input type="text" id="trip-country" class="form-control" placeholder="Ex: França, Canadá, Japão, Brasil" required>
+          </div>
+
+          <div class="form-group">
+            <label for="trip-start-date">Data de Início *</label>
+            <input type="date" id="trip-start-date" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="trip-end-date">Data de Término</label>
+            <input type="date" id="trip-end-date" class="form-control">
+          </div>
+
+          <div class="form-group form-group-full">
+            <label for="trip-status">Status da Viagem *</label>
+            <select id="trip-status" class="form-control">
+              <option value="proxima" selected>✈️ Próxima / Planejada (Viagem futura)</option>
+              <option value="concluida">✓ Concluída (Já realizada)</option>
+            </select>
+          </div>
+
+          <div class="form-group form-group-full">
+            <label for="trip-description">Descrição / Memórias da Viagem</label>
+            <textarea id="trip-description" class="form-control" placeholder="Descreva suas expectativas, lugares que deseja conhecer ou as melhores lembranças desse destino..."></textarea>
+          </div>
+
+          <!-- Seleção de Foto de Capa -->
+          <div class="form-group form-group-full">
+            <label>Foto de Capa (Escolha um tema ou insira uma URL)</label>
+            <div class="presets-selector" id="cover-presets-container">
+              <!-- Renderizado dinamicamente via script.js -->
+            </div>
+
+            <div style="margin-top: 14px;">
+              <input type="url" id="trip-image-input" class="form-control" placeholder="Ou cole a URL de uma foto personalizada...">
+            </div>
+
+            <div class="image-preview-container">
+              <img id="cover-preview-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80" alt="Pré-visualização da capa">
+            </div>
+          </div>
+
+        </div>
+
+        <div style="display: flex; gap: 14px; justify-content: flex-end; margin-top: 32px; border-top: 1px solid var(--border); padding-top: 24px;">
+          <a href="viagens.html" class="btn btn-outline">Cancelar</a>
+          <button type="submit" class="btn btn-primary" style="padding: 12px 32px;">✈ Salvar Viagem</button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">MYTRIP</div>
+      <p class="footer-tagline">Explore novos horizontes. Registre cada detalhe. Reviva para sempre.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="viagens.html">Viagens</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="memorias.html">Memórias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="nova-viagem.html">Nova Viagem</a>
+      </div>
+      <small style="color: #79979D; margin-top: 12px;">© MYTRIP — Diário de Viagens Pessoal. Dados salvos localmente.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
